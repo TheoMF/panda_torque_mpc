@@ -9,4 +9,5 @@ rosbag record \
     /ctrl_mpc_linearized/joint_configurations_comparison \
     /ctrl_mpc_linearized/joint_velocities_comparison \
     /ctrl_mpc_linearized/joint_torques_comparison \
-    /ctrl_mpc_linearized/target_time
+    /ctrl_mpc_linearized/target_time \
+    /ctrl_mpc_linearized/control_duration

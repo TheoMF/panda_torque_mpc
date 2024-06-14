@@ -351,7 +351,7 @@ namespace panda_torque_mpc
         lfc_msgs::jointStateMsgToEigen(ctrl_msg.initial_state.joint_state, js_eig);
         x0_mpc << js_eig.position, js_eig.velocity;
 
-        control_solve_time_rtbox_.set(ctrl_msg.initial_state.header.stamp - ros::Time::now());
+        control_solve_time_rtbox_.set(ros::Time::now() - ctrl_msg.initial_state.header.stamp);
         x0_mpc_rtbox_.set(x0_mpc);
         u0_mpc_rtbox_.set(u0_mpc);
         K_ricatti_rtbox_.set(K_ricatti);

@@ -75,6 +75,7 @@ def read_jsid_bag(bag_path, controller_name):
         f"/{controller_name}/joint_torques_comparison",
         f"/{controller_name}/target_time",
         f"/{controller_name}/ocp_solve_time",
+        f"/{controller_name}/control_duration",
     ]
 
     fields = ["commanded", "measured", "error"]
@@ -83,8 +84,9 @@ def read_jsid_bag(bag_path, controller_name):
         df_q = get_dataframe(reader, topics[0], fields)
         df_dq = get_dataframe(reader, topics[1], fields)
         df_tau = get_dataframe(reader, topics[2], fields)
-        df_target_time = get_dataframe(reader, topics[3], ["data"])
+        # df_target_time = get_dataframe(reader, topics[3], ["data"])
         df_iter_duration = get_dataframe(reader, topics[4], ["data"])
+        df_total_iter_duration = get_dataframe(reader, topics[5], ["data"])
 
     # there might be a one msg difference between the different topics in a same bag -> trim that
     min_size = len(
@@ -93,8 +95,9 @@ def read_jsid_bag(bag_path, controller_name):
     df_q = df_q[:min_size]
     df_dq = df_dq[:min_size]
     df_tau = df_tau[:min_size]
-    df_target_time = df_target_time[:min_size]
+    # df_target_time = df_target_time[:min_size]
     df_iter_duration = df_iter_duration[:min_size]
+    df_total_iter_duration = df_total_iter_duration[:min_size]
 
     d_res = {
         "t": index_2_tarr(df_q.index),
@@ -113,8 +116,9 @@ def read_jsid_bag(bag_path, controller_name):
             "measured": df_col_vec_asarr(df_tau, "measured"),
             "error": df_col_vec_asarr(df_tau, "error"),
         },
-        "target_time": retrieve_time(df_target_time),
+        # "target_time": retrieve_time(df_target_time),
         "iter_duration": retrieve_time(df_iter_duration),
+        "total_iter_duration": retrieve_time(df_total_iter_duration),
     }
 
     return d_res

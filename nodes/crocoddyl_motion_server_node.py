@@ -30,7 +30,7 @@ class CrocoMotionServer:
         self.control_publisher = rospy.Publisher(
             "motion_server_control", Control, queue_size=1
         )
-        self.ocp_solve_time_pub = rospy.Publisher("ocp_solve_time", Duration, 1);
+        self.ocp_solve_time_pub = rospy.Publisher("ocp_solve_time", Duration, 1)
         self.start_time = 0.0
         self.first_solve = False
         self.first_robot_sensor_msg_received = False
@@ -99,10 +99,9 @@ class CrocoMotionServer:
         self.control_msg.feedforward = to_multiarray_f64(self.croco_reaching.tau_ff)
         self.control_msg.initial_state = sensor_msg
         self.control_publisher.publish(self.control_msg)
-        
+
         self.ocp_solve_time.data = rospy.Time.now() - start_compute_time
         self.ocp_solve_time_pub.publish(self.ocp_solve_time)
-        
 
     def run(self):
         while not rospy.is_shutdown():

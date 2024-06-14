@@ -172,7 +172,7 @@ ctrl_mpc_linearized:
     use_riccati_gains: false
 
     ####################
-    freq_solve: 100
+    freq_solve: 1000
     # OCP motion server configs
     # nb_shooting_nodes: 20
 

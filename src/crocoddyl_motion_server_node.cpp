@@ -411,6 +411,7 @@ namespace panda_torque_mpc
         void callback_robot_state(const lfc_msgs::Sensor &sensor_msg)
         {
             // Recover latest robot state from the sensor msg
+            sensor_msg_ = sensor_msg;
             t_sensor_ = sensor_msg.header.stamp;
             lfc_msgs::Eigen::Sensor sensor_eig;
             lfc_msgs::sensorMsgToEigen(sensor_msg, sensor_eig);
@@ -536,6 +537,7 @@ namespace panda_torque_mpc
             target_time_pub_.publish(target_time);
             
             lfc_msgs::controlEigenToMsg(ctrl_eig, ctrl_msg);
+            ctrl_msg.initial_state = sensor_msg_;
             control_pub_.publish(ctrl_msg);
 
             const auto duration = tt_solve.tac();
@@ -546,6 +548,7 @@ namespace panda_torque_mpc
 
         // sensor callback
         ros::Time t_sensor_;
+        lfc_msgs::Sensor sensor_msg_;
         double start_time = 0.0;
         Vector7d q_init_rtbox_;
         Eigen::Matrix<double, 14, 1> current_x_rtbox_;

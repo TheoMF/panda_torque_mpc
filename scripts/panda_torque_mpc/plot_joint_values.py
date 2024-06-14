@@ -59,7 +59,7 @@ targets["y2"] = [0.35] * cycle_len
 targets["z"] = [1] * cycle_len
 
 data = read_jsid_bag(BAG_PATHS[0], CONTROLLER_NAME)
-data["t"] += data["target_time"][0]  # 34.18
+# data["t"] += data["target_time"][0]  # 34.18
 
 
 def plotting():
