@@ -35,7 +35,6 @@ find_package(tsid REQUIRED)
 
 find_package(example-robot-data REQUIRED)
 
-
 add_message_files(
   FILES
   JointValuesComparison.msg
@@ -194,10 +193,12 @@ catkin_install_python(PROGRAMS
   nodes/move_to_start.py
   nodes/pose_publisher.py
   nodes/obstacle_visualizer.py
-  nodes/SDFGenerator.py
   DESTINATION
   ${CATKIN_PACKAGE_LIB_DESTINATION}/${PROJECT_NAME}
   )
+
+  #install python libraries
+  install(FILES scripts/panda_torque_mpc/SDFGenerator.py DESTINATION lib/python3/dist-packages/panda_torque_mpc)
 
 # Install C++ nodes
 install(TARGETS
