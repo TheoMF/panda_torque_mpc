@@ -15,7 +15,8 @@ namespace panda_torque_mpc
    
     namespace pin = pinocchio;
     namespace bp = boost::python;
-    
+   
+   boost::python::def("reduce_capsules_robot", panda_torque_mpc::reduce_capsules_robot);
    static boost::shared_ptr<CrocoddylReaching> constructor(pin::Model _model_pin, 
             const boost::shared_ptr<pin::GeometryModel>& _collision_model,bp::dict mpc_params) {
 
