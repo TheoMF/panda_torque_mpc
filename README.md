@@ -157,3 +157,8 @@ roslaunch panda_torque_mpc crocoddyl_motion_server_node
 * Check if latest franka_ros fixes inverted torque measurements in gazebo sim
 * Refactor log publishers -> LoggingExperiment class with RTpublishers?
 * stream `pose_c_o_ref` from outside source
+
+catkin config -DCMAKE_BUILD_TYPE=RELEASE -DCMAKE_EXPORT_COMPILE_COMMANDS=ON -DPYTHON_SITELIB=lib/python3/dist-packages -DBUILD_ROS_INTERFACE=ON
+catkin config --install
+catkin clean -y
+catkin build -j8
