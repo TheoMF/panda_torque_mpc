@@ -44,6 +44,9 @@ point.velocities = [0] * len(pose)
 goal.trajectory.points.append(point)
 goal.goal_time_tolerance = ros.Duration.from_sec(0.5)
 
+import time
+time.sleep(5)
+
 ros.loginfo('Sending trajectory Goal to move into initial config')
 client.send_goal_and_wait(goal)
 

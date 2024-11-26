@@ -22,7 +22,7 @@
 
   <!-- Start the node interfacing with libfranka to control the robot -->
   <include file="$(find panda_torque_mpc)/launch/franka_control.launch" pass_all_args="true"/>
-
+  <param name="pinocchio_robot_description" command="$(find xacro)/xacro $(find panda_torque_mpc)/urdf/demo.urdf.xacro hand:=true arm_id:=panda gazebo:=false pinocchio_collisions:=true"/>
 
   <!-- spawns the controller -->
   <node pkg="controller_manager"

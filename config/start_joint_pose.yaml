@@ -38,3 +38,12 @@ joint_pose:
 #   $(arg arm_id)_joint6: 1.82791294e+00  
 #   $(arg arm_id)_joint7: 4.73578634e-01
 
+# Starting position for pick and place task
+#joint_pose:
+#  $(arg arm_id)_joint1: 0
+#  $(arg arm_id)_joint2: 0
+#  $(arg arm_id)_joint3: 0
+#  $(arg arm_id)_joint4: -1.573963485445721
+#  $(arg arm_id)_joint5: 0
+#  $(arg arm_id)_joint6: 1.5572160817164562
+#  $(arg arm_id)_joint7: 0.785398163397
